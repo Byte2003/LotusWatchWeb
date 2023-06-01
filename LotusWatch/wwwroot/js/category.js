@@ -1,33 +1,45 @@
 ﻿var dataTable;
 $(document).ready(function () {
-    loadDataTable();
+   loadDataTable();
+    
+   
 })
 function loadDataTable() {
+
     dataTable = $('#tblCategoryData').DataTable({
         "ajax": {
-            "url": "/Category/GetAllCategories"
+            "url": "/Admin/Category/GetAllCategories"
         },
         "columns": [
-            { "data": "id", "width": "25%" },
+            { "data": "categoryId", "width": "25%" },
             { "data": "name", "width": "25%" },
-            //{ "data": "products", "width": "25%" },
-            //{ "data": "brands", "width": "25%" },
-
-
+            {"data":"description","width":"25%"},
             {
-                "data": "id",
+                "data": "categoryId",
                 "render": function (data) {
                     return `
-                            <a href="/Category/Edit?id=${data}" class="btn btn-outline-info mx-2">
-                                <i class="bi bi-pencil-square"></i> Edit
-                            </a>
-                            <a href="/Category/Delete?id=${data}" class="btn btn-outline-danger mx-2">
-                                <i class="bi bi-trash"></i>Delete
-                            </a>
+                            <div class="row justify-content-evenly">
+                                <div class="col-6 d-flex justify-content-center align-items-center">
+                                    <a href="/Admin//Category/Edit?id=${data}" class="btn btn-outline-info mx-2">
+                                        <i class="bi bi-pencil-square"></i> Edit
+                                    </a>
+                                </div>
+                                <div class="col-6 d-flex justify-content-center align-items-center">
+                                    <a href="/Admin/Category/Delete?id=${data}" class="btn btn-outline-danger mx-2">
+                                        <i class="bi bi-trash"></i>Delete
+                                    </a>
+                                </div>
+
+                            </div>
+                            
+                            
                             `
                 },
                 "width": "25%"
             }
         ]
+
+       
     });
+
 }

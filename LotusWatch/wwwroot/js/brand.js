@@ -5,25 +5,24 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblBrandData').DataTable({
         "ajax": {
-            "url": "/Brand/GetAllBrands"
+            "url": "/Admin/Brand/GetAllBrands"
         },
         "columns": [
-            { "data": "id", "width": "25%" },
-            { "data": "name", "width": "25%" },
-            { "data": "origin", "width": "25%" },
-            
-            //{ "data": "products", "width": "25%" },
-            //{ "data": "categories", "width": "25%" },
-            
-
-            {
-                "data": "id",
+            { "data": "brandId", "width": "5%" },
+            { "data": "brandName", "width": "15%" },
+            { "data": "contactName", "width": "10%" },
+            { "data": "address", "width": "15%" },
+            { "data": "city", "width": "10%" },
+            { "data": "phone", "width": "10%" },
+            { "data": "fax", "width": "10%" },
+                        {
+                "data": "brandId",
                 "render": function (data) {
                     return `
                        
-                            <a href="/Brand/Edit?id=${data}"
+                            <a href="/Admin/Brand/Edit?id=${data}"
                             class="btn btn-outline-info mx-2"> <i class="bi bi-pencil"></i> Edit</a>
-                            <a href="/Brand/Delete?id=${data}"
+                            <a href="/Admin/Brand/Delete?id=${data}"
                             class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
 					   
                         `

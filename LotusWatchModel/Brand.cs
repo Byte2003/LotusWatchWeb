@@ -11,17 +11,23 @@ namespace LotusWatchModel
     public class Brand
     {
         [Key]
-        public int Id { get; set; }
+        public int BrandId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string BrandName { get; set; }
         [Required]
-        public string Origin { get; set; }
+        public string ContactName { get; set; }
 
-        [ValidateNever]
-        public ICollection<Product> Products { get; set; }
+        [Required]
+        public string Address { get; set; }
 
-        [ValidateNever]
-        public ICollection<Category> Categories { get; set; }
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string Phone { get; set; }
+
+        [Required]
+        public string Fax { get; set; }
 
     }
 }

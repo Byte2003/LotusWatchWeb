@@ -11,15 +11,13 @@ namespace LotusWatchModel
     public class Category
     {
         [Key]
-        public int Id { get; set; }
+        public int CategoryId { get; set; }
         [Required]
         public string Name { get; set; }
 
-        [ValidateNever]
-        public ICollection<Product> Products { get; set; }
+        [Required]
+        public string Description { get; set; }
 
-        [ValidateNever]
-        public ICollection<Brand> Brands { get; set; }
 
 
     }

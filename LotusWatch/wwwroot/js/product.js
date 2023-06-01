@@ -5,24 +5,22 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblProductData').DataTable({
         "ajax": {
-            "url": "/Product/GetAllProducts"
+            "url": "/Admin/Product/GetAllProducts"
         },
         "columns": [
-            { "data": "id", "width": "5%" },
-            { "data": "name", "width": "10%" },
-            { "data": "color", "width": "10%" },
+            { "data": "productId", "width": "5%" },
+            { "data": "productName", "width": "10%" },
             { "data": "description", "width": "15%" },
             { "data": "price", "width": "10%" },
-            { "data": "discount", "width": "10%" },
-            { "data": "brand.name", "width": "10%" },
+            { "data": "brand.brandName", "width": "10%" },
             { "data": "category.name", "width": "10%" },
 
 
             {
-                "data": "id",
+                "data": "productId",
                 "render": function (data) {
                     return `
-                            <a href="/Product/Edit?id=${data}" class="btn btn-outline-info mx-2">
+                            <a href="/Admin/Product/Edit?id=${data}" class="btn btn-outline-info mx-2">
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
                             <a onClick=Delete('/Product/Delete/${data}') class="btn btn-outline-danger mx-2">
@@ -53,8 +51,42 @@ function Delete(url) {
                 success: function (data) {
                     if (data.success) {
                         dataTable.ajax.reload();
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-bottom-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
                         toastr.success(data.message);
                     } else {
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-bottom-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
                         toastr.error(data.message);
                     }
                 }
